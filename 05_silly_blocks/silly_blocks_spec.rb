@@ -7,14 +7,16 @@ describe "some silly block functions" do
       result = reverser do
         "hello"
       end
-      result.should == "olleh"
+
+      expect(result).to eq("olleh")
+
       # You might be tempted to ask yourself what the hell is happening here.
       # Well no worries! Superman is here to the rescue!
       # (Heh, you probably don't even know whose written these comments.)
-      # 
+      #
       # Let's look at this snippet of code in particular:
-      # 
-      # reverser do 
+      #
+      # reverser do
       #   "hello"
       # end
       #
@@ -22,36 +24,36 @@ describe "some silly block functions" do
       # except the string is not being passed in as a parameter. It's being passed in as a do-end block.
       # The way this method can get that do-end block is through yield.
       #
-      # def example 
-      #   string = yield # yield is equal to... 
+      # def example
+      #   string = yield # yield is equal to...
       #   string.upcase
       # end
-      # 
-      # example do 
+      #
+      # example do
       #   "My name is Will Richman." # ...this line
       # end
-      # 
+      #
       # So to get this test to pass the reverser method would look like:
-      # 
+      #
       # def reverser
       #   yield.reverse
       # end
     end
 
     it "reverses each word in the string returned by the default block" do
-      # Now edit the reverser method above to get this test to pass 
+      # Now edit the reverser method above to get this test to pass
       result = reverser do
         "hello dolly"
       end
-      result.should == "olleh yllod"
+      expect(result).to eq("olleh yllod")
     end
   end
 
   describe "adder" do
     it "adds one to the value returned by the default block" do
-      adder do
+      expect(adder do
         5
-      end.should == 6
+      end).to eq(6)
       # def adder
       #   num = yield
       #   # what do you want do you with num?
@@ -59,9 +61,9 @@ describe "some silly block functions" do
     end
 
     it "adds 3 to the value returned by the default block" do
-      adder(3) do
+      expect(adder(3) do
         5
-      end.should == 8
+      end).to eq(8)
     end
   end
 
@@ -71,7 +73,7 @@ describe "some silly block functions" do
       repeater do
         n += 3
       end
-      n.should == 5
+      expect(n).to eq(5)
     end
 
     it "executes the default block 3 times" do
@@ -79,7 +81,7 @@ describe "some silly block functions" do
       repeater(3) do
         n += 1
       end
-      n.should == 3
+      expect(n).to eq(3)
     end
 
     it "executes the default block 10 times" do
@@ -87,7 +89,7 @@ describe "some silly block functions" do
       repeater(10) do
         n += 1
       end
-      n.should == 10
+      expect(n).to eq(10)
     end
 
   end
