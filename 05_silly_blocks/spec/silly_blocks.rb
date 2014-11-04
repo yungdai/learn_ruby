@@ -1,8 +1,7 @@
 # def reverser(words)
-#   sentence = (words.split.map do |word|
-#     word.reverse
+#   sentence = (words.split(' ')do |word|
+#     word.reverse!
 #   end).join(' ')
-#   puts sentence
 # end
 
 
