@@ -1,17 +1,31 @@
-def reverser(sentence)
-  sentence = (sentence.split.map do |word|
-    word.reverse
-  end).join(' ')
-  puts sentence
+# def reverser(words)
+#   sentence = (words.split.map do |word|
+#     word.reverse
+#   end).join(' ')
+#   puts sentence
+# end
+
+
+def reverser
+  if block_given?
+    string = yield
+    words = string.split(' ')
+    words.each {|word| word.reverse!}
+    words.join(' ')
+  end
 end
 
 
-puts reverser("hello")
-puts reverser("hello dolly")
 
-def adder(number)
-  new_total = number + 5
-  puts new_total
+def adder(add_value = 1)
+  if block_given?
+    number = yield
+    number += add_value
+  end
 end
 
-adder(3)
+def repeater(number_times = 1)
+  if block_given?
+    number_times.times {yield}
+  end
+end
